@@ -2803,7 +2803,23 @@ let api = function Binance( options = {} ) {
         * @return {promise or undefined} - omitting the callback returns a promise
         */
         lending: async ( params = {} ) => {
-            return promiseRequest( 'v1/lending/union/account', params, {base:sapi, type:'SIGNED'} );
+          return promiseRequest( 'v1/lending/union/account', params, {base:sapi, type:'USER_DATA'} );
+        },
+
+        lendingFlexibleProducts: async (params = {}) => {
+          return promiseRequest('v1/lending/daily/product/list', params, {base:sapi, type: 'USER_DATA'})
+        },
+
+        lendingFlexibleLeftQuota: async(params = {}) => {
+          return promiseRequest('v1/lending/daily/userLeftQuota', params, {base:sapi, type: 'USER_DATA'})
+        },
+
+        lendingFlexiblePurchase: async(params = {}) => {
+          return promiseRequest('v1/lending/daily/purchase', params, {base:sapi, type: 'USER_DATA', method: 'POST'})
+        },
+
+        lendingFlexibleRedeem: async(params = {}) => {
+          return promiseRequest('v1/lending/daily/redeem', params, {base:sapi, type: 'USER_DATA', method: 'POST'})
         },
 
         //** Futures methods */
