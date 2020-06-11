@@ -2822,6 +2822,14 @@ let api = function Binance( options = {} ) {
           return promiseRequest('v1/lending/daily/redeem', params, {base:sapi, type: 'USER_DATA', method: 'POST'})
         },
 
+        lendingProjects: async(params = {}) => {
+          return promiseRequest('v1/lending/project/list', params, {base:sapi, type: 'USER_DATA'})
+        },
+
+        lendingCustomizedFixedProjectPurchase: async(params = {}) => {
+          return promiseRequest('v1/lending/customizedFixed/purchase', params, {base:sapi, type: 'USER_DATA', method: 'POST'})
+        },
+
         //** Futures methods */
         futuresPing: async ( params = {} ) => {
             return promiseRequest( 'v1/ping', params, {base:fapi} );
